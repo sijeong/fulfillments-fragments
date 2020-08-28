@@ -1,0 +1,62 @@
+{
+    "responseId": "60e4f2ce-219d-4417-98e0-0a152e423e4a-84185ff2",
+    "queryResult": {
+      "queryText": "give me fulfillment payload",
+      "parameters": {},
+      "allRequiredParamsPresent": true,
+      "fulfillmentMessages": [
+        {
+          "payload": {
+            "telegram": {
+              "reply_markup": {
+                "resize_keyboard": true,
+                "inline_keyboard": [
+                  [
+                    {
+                      "text": "Search",
+                      "callback_data": "__search__"
+                    }
+                  ],
+                  [
+                    {
+                      "callback_data": "__booking__",
+                      "text": "Booking"
+                    }
+                  ],
+                  [
+                    {
+                      "text": "Deals",
+                      "callback_data": "__deals__"
+                    }
+                  ]
+                ],
+                "one_time_keyboard": true
+              },
+              "text": "Hi!"
+            }
+          },
+          "platform": "TELEGRAM"
+        },
+        {
+          "text": {
+            "text": [
+              ""
+            ]
+          }
+        }
+      ],
+      "intent": {
+        "name": "projects/appointmentscheduler-kfdc/agent/intents/9ba39286-5d11-47bd-b6f7-02558f0ec868",
+        "displayName": "fulfillment_payload"
+      },
+      "intentDetectionConfidence": 1,
+      "diagnosticInfo": {
+        "webhook_latency_ms": 3688
+      },
+      "languageCode": "en"
+    },
+    "webhookStatus": {
+      "code": 14,
+      "message": "Webhook call failed. Error: UNAVAILABLE."
+    }
+  }
