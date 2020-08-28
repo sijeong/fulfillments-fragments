@@ -10,8 +10,8 @@ console.log(time.split('T')[1])
 console.log(time.split('T')[1].split('-')[0])
 
 console.log(dateTimeStart.toISOString())
-import functions from 'firebase-functions'
-import {WebhookClient, Payload, Card, Suggestion} from 'dialogflow-fulfillment'
+// import functions from 'firebase-functions'
+// import {WebhookClient, Payload, Card, Suggestion} from 'dialogflow-fulfillment'
 import request from 'request-promise-native'
 const api_key = '45B1B5C28EB675B4AEC2C2928290F0C5'
 const uri = 'https://cloudhospitalsearch.search.windows.net/indexes/idx-hospitals-prd/docs/search?api-version=2020-06-30'
@@ -22,7 +22,8 @@ async function searchHospitalsBySpecialty(keyword){
         uri: uri,
         json: true,
         body: {
-            'search': "cancer + korea",
+            // 'search': "cancer + korea",
+            'search': "Country:korea AND \"lung cancer\"^3",
             'queryType': "full",
             'searchMode': "any",
             'select':"Name, Id",
@@ -33,19 +34,20 @@ async function searchHospitalsBySpecialty(keyword){
         }
     }
 
+    // "search": "country:korea" AND \"lung cancer\"^3"
     const response = await request(options)
     // console.log(response)
     return response.value
   }
 
-exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, respnse) => {
-    const agent = new WebhookClient({request, response})
-    agent.add()
-    function welcome(agent) {
+// exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, respnse) => {
+//     const agent = new WebhookClient({request, response})
+//     agent.add()
+//     function welcome(agent) {
         
-    }
+//     }
 
-})
+// })
 searchHospitalsBySpecialty('lung cancer').then(d => console.log(d))
 
 // searchHospitalsBySpecialty('cancer')
@@ -64,5 +66,4 @@ async function getSearchResult(){
 
     return response.data;
 }
-
 // getSearchResult().then(d => console.log(d))
